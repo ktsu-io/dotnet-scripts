@@ -4,5 +4,7 @@ public static List<string> GetConfigList()
 		".editorconfig",
 		".gitattributes",
 		"nuget.config",
+		"project.props.default",
+		"medmondson.props",
 	};
 }
