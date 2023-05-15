@@ -15,7 +15,7 @@ statusProcess.WaitForExit();
 
 bool ahead = status.Contains("Your branch is ahead of");
 bool uptodate = status.Contains("Your branch is up to date with");
-bool pristine = !status.Contains("Changes not staged for commit");
+bool pristine = !status.Contains("Changes not staged for commit") && !status.Contains("Changes to be committed");
 
 if (ahead)
 {
@@ -31,6 +31,8 @@ else if (!pristine)
 }
 else
 {
+	Process.Start(new ProcessStartInfo("dotnet", $"clean {config}") { UseShellExecute = false }).WaitForExit();
+	Process.Start(new ProcessStartInfo("dotnet", $"build {config}") { UseShellExecute = false }).WaitForExit();
 	Process.Start(new ProcessStartInfo("dotnet", $"pack {config} -p:RepositoryCommit={commit}") { UseShellExecute = false }).WaitForExit();
 	Process.Start(new ProcessStartInfo("dotnet", $"nuget push {pkg} --skip-duplicate") { UseShellExecute = false }).WaitForExit();
 }
