@@ -1,6 +1,8 @@
 #load "pull_file.csx"
+#load "configs.csx"
+
+using System.Linq;
 
 var cwd = Directory.GetCurrentDirectory();
 
-PullFile($"file://{cwd}/../dotnet-configs/.editorconfig");
-PullFile($"file://{cwd}/../dotnet-configs/nuget.config");
+GetConfigList().ForEach(c => PullFile($"file://{cwd}/../dotnet-configs/{c}"));

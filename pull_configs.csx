@@ -1,4 +1,5 @@
 #load "pull_file.csx"
+#load "configs.csx"
 
-PullFile("https://raw.githubusercontent.com/matt-edmondson/dotnet-configs/main/.editorconfig");
-PullFile("https://raw.githubusercontent.com/matt-edmondson/dotnet-configs/main/nuget.config");
+GetConfigList().ForEach(c => PullFile($"https://raw.githubusercontent.com/matt-edmondson/dotnet-configs/main/{c}"));
+
