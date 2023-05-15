@@ -5,7 +5,7 @@ public static List<string> GetConfigList()
 		".gitattributes",
 		".gitignore",
 		"nuget.config",
-		"project.props.default",
+		".project.props.default",
 		"Directory.Build.props",
 	};
 }
