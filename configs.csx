@@ -6,6 +6,6 @@ public static List<string> GetConfigList()
 		".gitignore",
 		"nuget.config",
 		"project.props.default",
-		"medmondson.props",
+		"Directory.Build.props",
 	};
 }
